@@ -1,0 +1,85 @@
+<textarea id="textarea"></textarea> <br /><br />
+<button id="clear">Clear All</button>
+<button id="capitalize">Capitalize</button>
+<button id="sort">Sort</button>
+<button id="reverse">Reverse</button>
+<button id="strip">Strip Blank</button>
+<button id="add">Add Numbers</button>
+<button id="shuffle">Shuffle</button>
+
+<script>
+  const textarea = document.querySelector('#textarea');
+  const clearButton = document.querySelector('#clear');
+  const capitalizeButton = document.querySelector('#capitalize');
+  const sortButton = document.querySelector('#sort');
+  const reverseButton = document.querySelector('#reverse');
+  const stripButton = document.querySelector('#strip');
+  const addButton = document.querySelector('#add');
+  const shuffleButton = document.querySelector('#shuffle');
+
+  let isUppercase = false;
+
+  clearButton.addEventListener('click', function () {
+    textarea.value = '';
+  });
+
+  capitalizeButton.addEventListener('click', function () {
+    if (isUppercase) {
+      textarea.value = textarea.value.toLowerCase();
+      isUppercase = false;
+    } else {
+      textarea.value = textarea.value.toUpperCase();
+      isUppercase = true;
+    }
+  });
+
+  sortButton.addEventListener('click', function () {
+    let lines = textarea.value.split('\n');
+    lines.sort();
+    textarea.value = lines.join('\n');
+  });
+
+  reverseButton.addEventListener('click', function () {
+    let lines = textarea.value.split('\n');
+    lines = lines.map((line) => line.split('').reverse().join(''));
+    textarea.value = lines.join('\n');
+  });
+
+  stripButton.addEventListener('click', function () {
+    let lines = textarea.value.split('');
+    lines = lines.filter((line) => line.trim() !== '');
+    textarea.value = lines.join('');
+  });
+
+  // stripButton.addEventListener('click', function () {
+  //   const lines = textarea.value.trim().split('');
+  //   const nonEmptyLines = lines.filter((line) => line.trim() !== '');
+  //   textarea.value = nonEmptyLines.join('');
+  // });
+  // stripButton.addEventListener('click', function () {
+  //   const lines = textarea.value.trim().split('');
+  //   const nonEmptyLines = lines.filter((line) => line.trim() !== '');
+  //   textarea.value = nonEmptyLines.join.replace('');
+  // });
+
+  // const sentence = '    My string with a    lot   of Whitespace.  '.replace(/\s+/g, ' ').trim()
+  addButton.addEventListener('click', function () {
+    let lines = textarea.value.split('\n');
+    lines = lines.map((line, index) => `${index + 1}. ${line}`);
+
+    textarea.value = lines.join('\n');
+  });
+
+  shuffleButton.addEventListener('click', function () {
+    let lines = textarea.value.split(''),
+      temp;
+    for (let i = lines.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+
+      temp = lines[i];
+      lines[i] = a[j];
+      a[j] = temp;
+    }
+    textarea.value = lines.join('');
+  });
+</script>

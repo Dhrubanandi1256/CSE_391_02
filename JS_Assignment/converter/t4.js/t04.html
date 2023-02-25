@@ -1,0 +1,64 @@
+<script>
+  // Get references to the DOM elements
+  const textArea = document.getElementById('text-area');
+  const clearButton = document.getElementById('clear-button');
+  const capitalizeButton = document.getElementById('capitalize-button');
+  const sortButton = document.getElementById('sort-button');
+  const reverseButton = document.getElementById('reverse-button');
+  const stripBlankButton = document.getElementById('strip-blank-button');
+  const addNumbersButton = document.getElementById('add-numbers-button');
+  const shuffleButton = document.getElementById('shuffle-button');
+
+  // Add click event listeners to the buttons
+  clearButton.addEventListener('click', function () {
+    textArea.value = '';
+  });
+
+  capitalizeButton.addEventListener('click', function () {
+    const text = textArea.value;
+    if (capitalizeButton.textContent === 'Capitalize') {
+      textArea.value = text.toUpperCase();
+      capitalizeButton.textContent = 'Lowercase';
+    } else {
+      textArea.value = text.toLowerCase();
+      capitalizeButton.textContent = 'Capitalize';
+    }
+  });
+
+  sortButton.addEventListener('click', function () {
+    const lines = textArea.value.trim().split('\n');
+    lines.sort();
+    textArea.value = lines.join('\n');
+  });
+
+  reverseButton.addEventListener('click', function () {
+    const lines = textArea.value.trim().split('\n');
+    for (let i = 0; i < lines.length; i++) {
+      lines[i] = lines[i].split('').reverse().join('');
+    }
+    textArea.value = lines.join('\n');
+  });
+
+  stripBlankButton.addEventListener('click', function () {
+    const lines = textArea.value.trim().split('\n');
+    const nonEmptyLines = lines.filter((line) => line.trim() !== '');
+    textArea.value = nonEmptyLines.join('\n');
+  });
+
+  // addNumbersButton.addEventListener('click', function () {
+  //   const lines = textArea.value.trim().split('\n');
+  //   for (let i = 0; i <script lines.length; i++) {
+  //     lines[i] = i + 1 + '. ' + lines[i].trim();
+  //   }
+  //   textArea.value = lines.join('\n');
+  // });
+
+  shuffleButton.addEventListener('click', function () {
+    const lines = textArea.value.trim().split('\n');
+    for (let i = lines.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [lines[i], lines[j]] = [lines[j], lines[i]];
+    }
+    textArea.value = lines.join('\n');
+  });
+</script>

@@ -1,0 +1,27 @@
+#quote-box {
+  width: 500px;
+  height: 200px;
+  margin: 50px auto;
+  border: 2px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+}
+#quote {
+  font-size: 30px;
+}
+
+.color-button {
+  margin: 80px;
+  padding: 20px 50px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+}
